@@ -8,5 +8,3 @@ cd dist
 sudo rm -rf /var/www/photobox
 sudo mkdir /var/www/photobox
 sudo cp -r * /var/www/photobox
-
-sudo nginx -s reload
