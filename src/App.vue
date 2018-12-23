@@ -1,28 +1,63 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <transition name="slide-text" mode="out-in">
+      <component :is="currentScreen"></component>
+      <div class="spinner" v-if="!currentScreen">
+        <fulfilling-square-spinner
+          :animation-duration="4000"
+          :size="50"
+          color="#fff"
+        />
+      </div>
+    </transition>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import { FulfillingSquareSpinner } from 'epic-spinners'
 
 export default {
   name: 'app',
   components: {
-    HelloWorld
+    FulfillingSquareSpinner
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    currentScreen () {
+      if (!this.$store.state.socket.isConnected) {
+        return null
+      }
+      return this.$store.state.currentScreen
+    }
+  },
+  created () {
+    this.$store.commit('initializeVideoStream')
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+* {
+  margin: 0;
+  padding: 0;
 }
+
+body {
+  overflow: hidden;
+}
+
+.spinner {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@import './style/theme.scss';
+@import './style/animations.scss';
 </style>

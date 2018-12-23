@@ -1,0 +1,16 @@
+
+// slide-text
+$slide-text-duration: .25s;
+$slide-text-amount: 10%;
+
+.slide-text-enter-active, .slide-text-leave-active {
+    transition: all $slide-text-duration;
+}
+.slide-text-enter {
+    transform: translateX($slide-text-amount);
+    opacity: 0;
+}
+.slide-text-leave-to {
+    transform: translateX(-$slide-text-amount);
+    opacity: 0;
+}
