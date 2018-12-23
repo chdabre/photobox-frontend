@@ -1,5 +1,5 @@
 <template>
-  <div class="wrapper">
+  <div class="wrapper" :style="backgroundImageStyle">
     <img :src="previewUrl"/>
   </div>
 </template>
@@ -17,6 +17,9 @@ export default {
   computed: {
     previewUrl () {
       return this.$store.state.previewUrl
+    },
+    backgroundImageStyle () {
+      return 'background-image: url(\"' + this.previewUrl + '\");'
     }
   },
   watch: {
@@ -33,11 +36,7 @@ export default {
 @import '../style/theme.scss';
 
 .wrapper {
+  width: 100vw;
   height: 100vh;
-}
-
-img {
-  min-width: 100%;
-  min-height: 100%;
 }
 </style>
