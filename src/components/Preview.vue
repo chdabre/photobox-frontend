@@ -26,7 +26,7 @@ export default {
   mounted () {
     setTimeout(() => {
       this.$store.commit('reset')
-    }, 8000)
+    }, 5000)
   }
 }
 </script>

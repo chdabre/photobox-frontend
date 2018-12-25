@@ -21,7 +21,7 @@ export default {
   data () {
     return {
       idleText: 'Strike a Pose & Push the Button!',
-      errorText: 'Oops, Something went wrong. Try Again!',
+      errorText: 'Try Again!',
       captureText: 'Smile!',
       countdownTexts: ['3', '2', '1'],
       pictureState: 'Idle',
@@ -47,13 +47,13 @@ export default {
           clearInterval(this.countdownIntervalId)
           this.takePicture()
         }
-      }, 1000)
+      }, 1500)
     },
     takePicture () {
       this.pictureState = 'Capture'
       setTimeout(() => {
         this.$store.commit('capture')
-      }, 1000)
+      }, 500)
     }
   },
   computed: {
