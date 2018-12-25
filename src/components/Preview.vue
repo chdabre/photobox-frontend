@@ -1,6 +1,5 @@
 <template>
   <div class="wrapper" :style="backgroundImageStyle">
-    <img :src="previewUrl"/>
   </div>
 </template>
 
@@ -19,7 +18,7 @@ export default {
       return this.$store.state.previewUrl
     },
     backgroundImageStyle () {
-      return 'background-image: url(\"' + this.previewUrl + '\");'
+      return 'background-image: url("' + this.previewUrl + '");'
     }
   },
   watch: {
@@ -36,9 +35,9 @@ export default {
 @import '../style/theme.scss';
 
 .wrapper {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
-  background-size: contain;
+  background-size: cover;
 }
 </style>

@@ -1,3 +1,12 @@
+// fade
+$fade-duration: .5s;
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity $fade-duration;
+}
+.fade-enter, .fade-leave-to{
+    opacity: 0;
+}
 
 // slide-text
 $slide-text-duration: .25s;

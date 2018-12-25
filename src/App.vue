@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <transition name="slide-text" mode="out-in">
+    <transition name="fade" mode="out-in">
       <component :is="currentScreen"></component>
       <div class="spinner" v-if="!currentScreen">
         <fulfilling-square-spinner
