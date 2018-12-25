@@ -105,7 +105,7 @@ export default {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%) scale(-1,1);
 
     min-width: 100%;
     min-height: 100%;
