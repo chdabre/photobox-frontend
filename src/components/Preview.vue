@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper" :style="backgroundImageStyle">
-    <canvas ref="printCanvas" width="600" height="400"></canvas>
+    <canvas ref="printCanvas" width="600" height="400" style="display:none"></canvas>
   </div>
 </template>
 
@@ -30,7 +30,10 @@ export default {
         ctx.strokeText(text, 20, canvas.height - 30)
         ctx.fillText(text, 20, canvas.height - 30)
 
-        console.log(canvas.toDataURL("image/png"))
+        this.$socket.send(JSON.stringify({
+          'action': 'print',
+          'image': canvas.toDataURL("image/png")
+        }))
       })
     }
   },
@@ -49,8 +52,8 @@ export default {
   },
   mounted () {
     setTimeout(() => {
-      // this.$store.commit('reset')
-    }, 5000)
+      this.$store.commit('reset')
+    }, 8000)
     
     this.drawPrintCanvas()
   }

@@ -21,10 +21,10 @@ export default new Vuex.Store({
       message: '',
       reconnectError: false
     },
-    currentScreen: Preview,
+    currentScreen: Capture,
     videoStream: null,
-    previewUrl: 'http://localhost:8000/0035.jpg',
-    previewName: '0035', 
+    previewUrl: '',
+    previewName: '', 
     captureError: false
   },
   mutations: {
