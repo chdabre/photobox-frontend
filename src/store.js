@@ -21,9 +21,10 @@ export default new Vuex.Store({
       message: '',
       reconnectError: false
     },
-    currentScreen: Capture,
+    currentScreen: Preview,
     videoStream: null,
-    previewUrl: '',
+    previewUrl: 'http://localhost:8000/0035.jpg',
+    previewName: '0035', 
     captureError: false
   },
   mutations: {
@@ -66,6 +67,7 @@ export default new Vuex.Store({
       if (message.event === 'imageReady' && state.currentScreen === Capture) {
         state.currentScreen = Preview
         state.previewUrl = 'http://localhost:81/' + message.filename
+        state.previewName = message.name
       } else if (message.event === 'captureError' && state.currentScreen === Capture) {
         state.captureError = true
         console.log('Capture error: ' + state.error)
