@@ -55,7 +55,8 @@ export default {
         this.$store.commit('capture')
       }, 500)
     },
-    onMessage (message) {
+    onMessage (data) {
+      var message = JSON.parse(data.data)
       if (message.event === 'buttonPressed') {
         this.startCountdown()
       }
