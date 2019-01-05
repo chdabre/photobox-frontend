@@ -25,7 +25,7 @@ export default new Vuex.Store({
     videoStream: null,
     previewUrl: '',
     previewName: '', 
-    captureError: false
+    captureError: false,
   },
   mutations: {
     initializeVideoStream (state) {
@@ -63,7 +63,7 @@ export default new Vuex.Store({
     // default handler called for all methods
     SOCKET_ONMESSAGE (state, message) {
       state.socket.message = message
-
+      
       if (message.event === 'imageReady' && state.currentScreen === Capture) {
         state.currentScreen = Preview
         state.previewUrl = 'http://localhost:81/' + message.filename

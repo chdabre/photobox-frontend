@@ -54,6 +54,11 @@ export default {
       setTimeout(() => {
         this.$store.commit('capture')
       }, 500)
+    },
+    onMessage (message) {
+      if (message.event === 'buttonPressed') {
+        this.startCountdown()
+      }
     }
   },
   computed: {
@@ -76,6 +81,8 @@ export default {
     }
   },
   created () {
+    this.$options.sockets.onmessage = this.onMessage
+
     window.addEventListener('keydown', () => {
       this.startCountdown()
     })
