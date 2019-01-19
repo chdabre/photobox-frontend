@@ -40,7 +40,7 @@ export default {
         this.imageLoaded = true
         setTimeout(() => {
           this.$store.commit('reset')
-        }, 6000)
+        }, 10000)
 
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
         ctx.font = '40px monospace'
