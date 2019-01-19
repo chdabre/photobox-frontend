@@ -1,8 +1,8 @@
 @font-face {
-    font-family: 'Futura';
-    src: url('/assets/Futura-Bold.woff2') format('woff2'),
-         url('/assets/Futura-Bold.woff') format('woff'),
-         url('/assets/Futura-Bold.ttf') format('truetype');
+    font-family: 'FuturaCustom';
+    src: url('/Futura-Bold.woff2') format('woff2'),
+         url('/Futura-Bold.woff') format('woff'),
+         url('/Futura-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
@@ -20,7 +20,7 @@ body {
 }
 
 .title {
-    font-family: 'Futura', Helvetica, Arial, sans-serif;
+    font-family: 'FuturaCustom', Helvetica, Arial, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
     letter-spacing: 5px;
