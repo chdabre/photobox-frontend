@@ -21,9 +21,9 @@ export default new Vuex.Store({
       message: '',
       reconnectError: false
     },
-    currentScreen: Preview,
+    currentScreen: Capture,
     videoStream: null,
-    previewUrl: 'https://upload.wikimedia.org/wikipedia/commons/f/ff/Pizigani_1367_Chart_10MB.jpg',
+    previewUrl: '',
     previewName: '', 
     captureError: false,
   },
