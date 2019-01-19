@@ -27,14 +27,14 @@ export default {
     }
   },
   methods: {
-    drawPrintCanvas() {
+    drawPrintCanvas () {
       var text = this.previewName
       var canvas = this.$refs.printCanvas
-      var ctx = canvas.getContext("2d")
-      var image = new Image();
-      
-      image.crossOrigin='anonymous'
-      image.src = this.previewUrl;
+      var ctx = canvas.getContext('2d')
+      var image = new Image()
+
+      image.crossOrigin = 'anonymous'
+      image.src = this.previewUrl
 
       image.addEventListener('load', () => {
         this.imageLoaded = true
@@ -52,7 +52,7 @@ export default {
 
         this.$socket.send(JSON.stringify({
           'action': 'print',
-          'image': canvas.toDataURL("image/png")
+          'image': canvas.toDataURL('image/png')
         }))
       })
     }
@@ -66,11 +66,11 @@ export default {
     },
     backgroundImageStyle () {
       var style = 'background-image: url("' + this.previewUrl + '");'
-      
-      if (!this.imageLoaded) {
+
+      if (!this.imageLoaded) {
         style += 'opacity: 0'
-      } 
-      
+      }
+
       return style
     }
   },
@@ -100,7 +100,7 @@ export default {
 .preview-wrapper {
   width: 100%;
   height: 100%;
-  
+
   background-size: cover;
   transition: opacity .5s;
 }

@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="camera" @click="startCountdown">
-      <video ref="video" autoplay></video>
+      <video ref="video" class="filter" autoplay></video>
       <div class="bottom-text">
         <transition name="slide-text" mode="out-in">
           <div class="title" :key="'idle'" v-if="pictureState === 'Idle'">{{ idleText }}</div>
-          <div class="title big" :key="'capture'" v-if="pictureState === 'Capture'">{{ captureText }}</div>
+          <div class="title medium" :key="'capture'" v-if="pictureState === 'Capture'">{{ captureText }}</div>
           <div class="title" :key="'captureError'" v-if="pictureState === 'Error'">{{ errorText }}</div>
 
           <div class="title big" :key="countdownText" v-if="pictureState === 'Countdown'">{{ countdownText }}</div>
@@ -20,9 +20,9 @@ export default {
   name: 'Capture',
   data () {
     return {
-      idleText: 'Strike a Pose & Push the Button!',
-      errorText: 'Try Again!',
-      captureText: 'Smile!',
+      idleText: 'Posieren & Knopf drücken!',
+      errorText: 'Noch einmal versuchen!',
+      captureText: 'CHEESE!',
       countdownTexts: ['3', '2', '1'],
       pictureState: 'Idle',
       countdownIntervalId: null,
@@ -139,5 +139,9 @@ export default {
   opacity: 1;
   overflow: hidden;
   z-index: 1;
+}
+
+.filter {
+  filter: saturate(125%);
 }
 </style>

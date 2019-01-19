@@ -1,8 +1,15 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:500,700');
+@font-face {
+    font-family: 'Futura';
+    src: url('/assets/Futura-Bold.woff2') format('woff2'),
+         url('/assets/Futura-Bold.woff') format('woff'),
+         url('/assets/Futura-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
 
 $light-gray: #ececec;
 $dark-gray: #444;
-$black: rgba(0,0,0,.9);
+$black: rgb(32, 26, 24);
 
 body {
     background-color: $black;
@@ -13,18 +20,22 @@ body {
 }
 
 .title {
-    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    font-family: 'Futura', Helvetica, Arial, sans-serif;
     font-weight: bold;
     text-transform: uppercase;
+    letter-spacing: 5px;
 
     color: white;
     
     max-width: 80%;
 
     font-size: 4rem;
-    text-shadow: 0px 0px 80px rgba(0,0,0,0.75);
+    text-shadow: 0px 0px 40px rgba(0,0,0,1);
 }
 
+.medium {
+    font-size: 10rem;
+}
 .big {
     font-size: 15rem;
 }
