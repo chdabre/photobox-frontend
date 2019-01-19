@@ -1,7 +1,7 @@
 <template>
   <div class="wrapper">
     <div class="camera" @click="startCountdown">
-      <video ref="video" class="filter" autoplay></video>
+      <video ref="video" autoplay></video>
       <div class="bottom-text">
         <transition name="slide-text" mode="out-in">
           <div class="title" :key="'idle'" v-if="pictureState === 'Idle'">{{ idleText }}</div>
@@ -139,9 +139,5 @@ export default {
   opacity: 1;
   overflow: hidden;
   z-index: 1;
-}
-
-.filter {
-  filter: saturate(125%);
 }
 </style>
