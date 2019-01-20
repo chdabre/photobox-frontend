@@ -43,17 +43,22 @@ export default {
         }, this.settings.previewTime)
 
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
-        ctx.font = '40px monospace'
-        ctx.fillStyle = 'white'
-        ctx.strokeStyle = 'black'
-        ctx.lineWidth = 10
-        ctx.strokeText(text, 20, canvas.height - 30)
-        ctx.fillText(text, 20, canvas.height - 30)
+        
+        if (this.settings.printing.printNumbers) {
+          ctx.font = '40px monospace'
+          ctx.fillStyle = 'white'
+          ctx.strokeStyle = 'black'
+          ctx.lineWidth = 10
+          ctx.strokeText(text, 20, canvas.height - 30)
+          ctx.fillText(text, 20, canvas.height - 30)
+        }
 
-        this.$socket.send(JSON.stringify({
-          'action': 'print',
-          'image': canvas.toDataURL('image/png')
-        }))
+        if (this.settings.printing.enablePrinting) {
+          this.$socket.send(JSON.stringify({
+            'action': 'print',
+            'image': canvas.toDataURL('image/png')
+          }))
+        }
       })
     }
   },
