@@ -40,7 +40,7 @@ export default {
         this.imageLoaded = true
         setTimeout(() => {
           this.$store.commit('reset')
-        }, 10000)
+        }, this.settings.previewTime)
 
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
         ctx.font = '40px monospace'
@@ -58,6 +58,9 @@ export default {
     }
   },
   computed: {
+    settings () {
+      return this.$store.state.settings
+    },
     previewUrl () {
       return this.$store.state.previewUrl
     },

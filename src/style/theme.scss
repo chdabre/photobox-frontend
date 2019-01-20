@@ -1,3 +1,12 @@
+$light-gray: #ececec;
+$dark-gray: #444;
+$black: rgb(32, 26, 24);
+
+$primary-color: rgb(202, 68, 6);
+$dark-color: rgb(59, 29, 15);
+
+@import "spectre/src/spectre";
+
 @font-face {
     font-family: 'FuturaCustom';
     src: url('/Futura-Bold.woff2') format('woff2'),
@@ -7,13 +16,9 @@
     font-style: normal;
 }
 
-$light-gray: #ececec;
-$dark-gray: #444;
-$black: rgb(32, 26, 24);
-
 body {
     background-color: $black;
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: 'FuturaCustom', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
@@ -29,13 +34,28 @@ body {
     
     max-width: 80%;
 
-    font-size: 4rem;
+    font-size: 3rem;
     text-shadow: 0px 0px 40px rgba(0,0,0,1);
 }
 
 .medium {
-    font-size: 10rem;
+    font-size: 8rem;
 }
 .big {
-    font-size: 15rem;
+    font-size: 12rem;
+}
+
+h1 {
+    font-family: 'FuturaCustom', Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    font-size: 4rem;
+
+    color: $black;
+}
+
+h4 {
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }

@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 
 import Capture from './components/Capture.vue'
 import Preview from './components/Preview.vue'
+import Settings from './components/Settings.vue'
 
 Vue.use(Vuex)
 
@@ -25,9 +26,34 @@ export default new Vuex.Store({
     videoStream: null,
     previewUrl: '',
     previewName: '',
-    captureError: false
+    captureError: false,
+    settings: {}
   },
   mutations: {
+    loadSettings (state) {
+      if (localStorage.settings) {
+        state.settings = JSON.parse(localStorage.settings)
+      } else {
+        state.settings = {
+          printing: {
+            enablePrinting: true,
+            printNumbers: true
+          },
+          ui: {
+            idleText: 'Posieren & Knopf drücken!',
+            captureText: 'Cheese!',
+            errorText: 'Noch einmal versuchen!',
+            previewTime: 8000
+          }
+        }
+
+        localStorage.settings = JSON.stringify(state.settings)
+      }
+    },
+    storeSettings (state, settings) {
+      state.settings = settings
+      localStorage.settings = JSON.stringify(state.settings)
+    },
     initializeVideoStream (state) {
       if (state.videoStream === null) {
         try {
@@ -66,11 +92,13 @@ export default new Vuex.Store({
 
       if (message.event === 'imageReady' && state.currentScreen === Capture) {
         state.currentScreen = Preview
-        state.previewUrl = 'http://' + location.host + ':81/' + message.filename
+        state.previewUrl = 'http://' + location.hostname + ':81/' + message.filename
         state.previewName = message.name
       } else if (message.event === 'captureError' && state.currentScreen === Capture) {
         state.captureError = true
         console.log('Capture error: ' + state.error)
+      } else if (message.event === 'settings') {
+        state.currentScreen = Settings
       }
     },
     // mutations for reconnect methods

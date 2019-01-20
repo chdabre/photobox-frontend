@@ -34,15 +34,23 @@ export default {
     }
   },
   created () {
+    this.$store.commit('loadSettings')
     this.$store.commit('initializeVideoStream')
   }
 }
 </script>
 
 <style lang="scss">
-* {
-  margin: 0;
-  padding: 0;
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
 }
 
 body {

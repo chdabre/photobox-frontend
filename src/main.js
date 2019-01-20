@@ -6,7 +6,7 @@ import VueNativeSock from 'vue-native-websocket'
 
 Vue.config.productionTip = false
 
-Vue.use(VueNativeSock, 'ws://' + location.host + ':6789', {
+Vue.use(VueNativeSock, 'ws://' + location.hostname + ':6789', {
   store: store,
   format: 'json',
   reconnection: true, // (Boolean) whether to reconnect automatically (false)

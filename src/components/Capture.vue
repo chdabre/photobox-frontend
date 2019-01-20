@@ -4,9 +4,9 @@
       <video ref="video" autoplay></video>
       <div class="bottom-text">
         <transition name="slide-text" mode="out-in">
-          <div class="title" :key="'idle'" v-if="pictureState === 'Idle'">{{ idleText }}</div>
-          <div class="title medium" :key="'capture'" v-if="pictureState === 'Capture'">{{ captureText }}</div>
-          <div class="title" :key="'captureError'" v-if="pictureState === 'Error'">{{ errorText }}</div>
+          <div class="title" :key="'idle'" v-if="pictureState === 'Idle'">{{ settings.ui.idleText }}</div>
+          <div class="title medium" :key="'capture'" v-if="pictureState === 'Capture'">{{ settings.ui.captureText }}</div>
+          <div class="title" :key="'captureError'" v-if="pictureState === 'Error'">{{ settings.ui.errorText }}</div>
 
           <div class="title big" :key="countdownText" v-if="pictureState === 'Countdown'">{{ countdownText }}</div>
         </transition>
@@ -20,9 +20,6 @@ export default {
   name: 'Capture',
   data () {
     return {
-      idleText: 'Posieren & Knopf drücken!',
-      errorText: 'Noch einmal versuchen!',
-      captureText: 'CHEESE!',
       countdownTexts: ['3', '2', '1'],
       pictureState: 'Idle',
       countdownIntervalId: null,
@@ -63,6 +60,9 @@ export default {
     }
   },
   computed: {
+    settings () {
+      return this.$store.state.settings
+    },
     videoStream () {
       return this.$store.state.videoStream
     },
