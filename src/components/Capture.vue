@@ -83,10 +83,6 @@ export default {
   },
   created () {
     this.$options.sockets.onmessage = this.onMessage
-
-    window.addEventListener('keydown', () => {
-      this.startCountdown()
-    })
   },
   mounted () {
     this.$refs.video.srcObject = this.videoStream
