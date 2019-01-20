@@ -98,7 +98,11 @@ export default new Vuex.Store({
         state.captureError = true
         console.log('Capture error: ' + state.error)
       } else if (message.event === 'settings') {
-        state.currentScreen = Settings
+        if (state.currentScreen !== Settings) {
+          state.currentScreen = Settings
+        } else {
+          state.currentScreen = Capture
+        }
       }
     },
     // mutations for reconnect methods

@@ -40,10 +40,10 @@ export default {
         this.imageLoaded = true
         setTimeout(() => {
           this.$store.commit('reset')
-        }, this.settings.previewTime)
+        }, this.settings.ui.previewTime)
 
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
-        
+
         if (this.settings.printing.printNumbers) {
           ctx.font = '40px monospace'
           ctx.fillStyle = 'white'
