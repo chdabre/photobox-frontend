@@ -15,6 +15,24 @@
               <i class="form-icon"></i> Print Numbers
             </label>
           </div>
+          <form class="form-horizontal">
+            <div class="form-group">
+              <div class="col-3 col-sm-12">
+                <label class="form-label">Brightness</label>
+              </div>
+              <div class="col-9 col-sm-12">
+                <input class="form-input" type="number" v-model="settings.printing.brightness">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-3 col-sm-12">
+                <label class="form-label">Contrast</label>
+              </div>
+              <div class="col-9 col-sm-12">
+                <input class="form-input" type="number" v-model="settings.printing.contrast">
+              </div>
+            </div>
+          </form>
 
           <h4>User Interface</h4>
           <form class="form-horizontal">
@@ -53,6 +71,7 @@
           </form>
 
           <button @click="save" class="btn btn-primary">save</button>
+          <button @click="reset" class="btn btn-danger">reset</button>
         </div>
     </div>
 </template>
@@ -68,6 +87,9 @@ export default {
     save () {
       this.$store.commit('storeSettings', this.settings)
       this.$store.commit('reset')
+    },
+    reset () {
+      this.$store.commit('resetSettings')
     }
   },
   created () {

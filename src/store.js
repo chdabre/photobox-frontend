@@ -30,6 +30,9 @@ export default new Vuex.Store({
     settings: {}
   },
   mutations: {
+    resetSettings (state) {
+      localStorage.clear()
+    },
     loadSettings (state) {
       if (localStorage.settings) {
         state.settings = JSON.parse(localStorage.settings)
@@ -37,7 +40,9 @@ export default new Vuex.Store({
         state.settings = {
           printing: {
             enablePrinting: true,
-            printNumbers: true
+            printNumbers: true,
+            brightness: 0,
+            contrast: -5
           },
           ui: {
             idleText: 'Posieren & Knopf drücken!',

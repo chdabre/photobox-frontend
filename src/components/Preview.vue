@@ -56,7 +56,9 @@ export default {
         if (this.settings.printing.enablePrinting) {
           this.$socket.send(JSON.stringify({
             'action': 'print',
-            'image': canvas.toDataURL('image/png')
+            'image': canvas.toDataURL('image/png'),
+            'brightness': this.settings.printing.brightness,
+            'contrast': this.settings.printing.contrast
           }))
         }
       })
