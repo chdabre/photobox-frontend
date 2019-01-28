@@ -90,6 +90,8 @@ export default {
     },
     reset () {
       this.$store.commit('resetSettings')
+      this.$store.commit('loadSettings')
+      this.settings = this.$store.state.settings
     }
   },
   created () {
