@@ -62,6 +62,14 @@
             </div>
             <div class="form-group">
               <div class="col-3 col-sm-12">
+                <label class="form-label">Bottom Text</label>
+              </div>
+              <div class="col-9 col-sm-12">
+                <input class="form-input" type="text" v-model="settings.ui.bottomText">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-3 col-sm-12">
                 <label class="form-label">Preview time</label>
               </div>
               <div class="col-9 col-sm-12">

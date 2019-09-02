@@ -48,6 +48,7 @@ export default new Vuex.Store({
             idleText: 'Posieren & Knopf drücken!',
             captureText: 'Cheese!',
             errorText: 'Noch einmal versuchen!',
+            bottomText: 'Quittung behalten, die Fotos findest du später auf der Website!',
             previewTime: 8000
           }
         }

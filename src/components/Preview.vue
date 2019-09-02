@@ -8,6 +8,7 @@
       />
     </div>
 
+    <div class="title bottom-text">{{ $store.state.settings.ui.bottomText }}</div>
     <div class="preview-wrapper" :style="backgroundImageStyle"></div>
     <canvas ref="printCanvas" width="600" height="400" style="display:none"></canvas>
   </div>
@@ -113,5 +114,16 @@ export default {
 
   background-size: cover;
   transition: opacity .5s;
+}
+
+.bottom-text {
+  position: absolute;
+  bottom: 2rem;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-align: center;
+  font-size: 1.5rem;
+  text-shadow: 0px 0px 69px 0px rgba(0,0,0,0.4);
 }
 </style>
