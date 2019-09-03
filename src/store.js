@@ -98,7 +98,7 @@ export default new Vuex.Store({
 
       if (message.event === 'imageReady' && state.currentScreen === Capture) {
         state.currentScreen = Preview
-        state.previewUrl = 'http://' + location.hostname + ':8888/unsafe/1024x768/' + 'http://' + location.hostname + ':81/' + message.filename
+        state.previewUrl = 'http://' + location.hostname + ':82/unsafe/1024x768/' + 'http://' + location.hostname + ':81/' + message.filename
         state.previewName = message.name
       } else if (message.event === 'captureError' && state.currentScreen === Capture) {
         state.captureError = true
