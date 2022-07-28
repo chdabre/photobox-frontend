@@ -7,14 +7,22 @@ $dark-color: rgb(59, 29, 15);
 
 @import "spectre/src/spectre";
 
+//@font-face {
+//    font-family: 'FuturaCustom';
+//    src: url('/Futura-Bold.woff2') format('woff2'),
+//         url('/Futura-Bold.woff') format('woff'),
+//         url('/Futura-Bold.ttf') format('truetype');
+//    font-weight: bold;
+//    font-style: normal;
+//}
+
 @font-face {
     font-family: 'FuturaCustom';
-    src: url('/Futura-Bold.woff2') format('woff2'),
-         url('/Futura-Bold.woff') format('woff'),
-         url('/Futura-Bold.ttf') format('truetype');
+    src: url('/SpaceGrotesk-Bold.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
 }
+
 
 body {
     background-color: $black;
@@ -31,7 +39,7 @@ body {
     letter-spacing: 5px;
 
     color: white;
-    
+
     max-width: 80%;
 
     font-size: 3rem;

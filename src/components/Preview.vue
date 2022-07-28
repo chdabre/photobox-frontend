@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <div class="spinner" v-if="!imageLoaded">
+    <div v-if="!imageLoaded" class="spinner">
       <fulfilling-square-spinner
         :animation-duration="4000"
         :size="50"
@@ -9,8 +9,8 @@
     </div>
 
     <div class="title bottom-text">{{ $store.state.settings.ui.bottomText }}</div>
-    <div class="preview-wrapper" :style="backgroundImageStyle"></div>
-    <canvas ref="printCanvas" width="600" height="400" style="display:none"></canvas>
+    <div :style="backgroundImageStyle" class="preview-wrapper"></div>
+    <canvas ref="printCanvas" height="576" style="display:none" width="864"></canvas>
   </div>
 </template>
 
@@ -33,35 +33,42 @@ export default {
       var canvas = this.$refs.printCanvas
       var ctx = canvas.getContext('2d')
       var image = new Image()
+      var logoImage = new Image()
 
       image.crossOrigin = 'anonymous'
       image.src = this.previewUrl
 
-      image.addEventListener('load', () => {
-        this.imageLoaded = true
-        setTimeout(() => {
-          this.$store.commit('reset')
-        }, this.settings.ui.previewTime)
+      logoImage.crossOrigin = 'anonymous'
+      logoImage.src = '/sichtfeld-logo.png'
+      logoImage.addEventListener('load', () => {
+        image.addEventListener('load', () => {
+          this.imageLoaded = true
+          setTimeout(() => {
+            this.$store.commit('reset')
+          }, this.settings.ui.previewTime)
 
-        ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
+          ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
 
-        if (this.settings.printing.printNumbers) {
-          ctx.font = '40px monospace'
-          ctx.fillStyle = 'white'
-          ctx.strokeStyle = 'black'
-          ctx.lineWidth = 10
-          ctx.strokeText(text, 20, canvas.height - 30)
-          ctx.fillText(text, 20, canvas.height - 30)
-        }
+          ctx.drawImage(logoImage, 714, 361, 120, 185)
 
-        if (this.settings.printing.enablePrinting) {
-          this.$socket.send(JSON.stringify({
-            'action': 'print',
-            'image': canvas.toDataURL('image/png'),
-            'brightness': this.settings.printing.brightness,
-            'contrast': this.settings.printing.contrast
-          }))
-        }
+          if (this.settings.printing.printNumbers) {
+            ctx.font = '40px FuturaCustom'
+            ctx.fillStyle = 'white'
+            ctx.strokeStyle = 'black'
+            ctx.lineWidth = 10
+            ctx.strokeText(text, 20, canvas.height - 30)
+            ctx.fillText(text, 20, canvas.height - 30)
+          }
+
+          if (this.settings.printing.enablePrinting) {
+            this.$socket.send(JSON.stringify({
+              'action': 'print',
+              'image': canvas.toDataURL('image/png'),
+              'brightness': this.settings.printing.brightness,
+              'contrast': this.settings.printing.contrast
+            }))
+          }
+        })
       })
     }
   },
@@ -73,7 +80,7 @@ export default {
       return this.$store.state.previewUrl
     },
     previewName () {
-      return this.$store.state.previewName
+      return this.$store.state.previewName + ' sichtfeldopenair.ch'
     },
     backgroundImageStyle () {
       var style = 'background-image: url("' + this.previewUrl + '");'
@@ -91,7 +98,7 @@ export default {
 }
 </script>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 @import '../style/theme.scss';
 
 .wrapper {
@@ -124,6 +131,6 @@ export default {
   margin: auto;
   text-align: center;
   font-size: 1.5rem;
-  text-shadow: 0px 0px 69px 0px rgba(0,0,0,0.4);
+  text-shadow: 0px 0px 69px 0px rgba(0, 0, 0, 0.4);
 }
 </style>
