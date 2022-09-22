@@ -49,7 +49,7 @@ export default {
 
           ctx.drawImage(image, 0, 0, canvas.width, canvas.height)
 
-          ctx.drawImage(logoImage, 714, 361, 120, 185)
+          // ctx.drawImage(logoImage, 714, 361, 120, 185)
 
           if (this.settings.printing.printNumbers) {
             ctx.font = '40px FuturaCustom'
@@ -80,7 +80,7 @@ export default {
       return this.$store.state.previewUrl
     },
     previewName () {
-      return this.$store.state.previewName + ' sichtfeldopenair.ch'
+      return this.$store.state.previewName
     },
     backgroundImageStyle () {
       var style = 'background-image: url("' + this.previewUrl + '");'
